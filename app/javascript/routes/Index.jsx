@@ -1,11 +1,21 @@
-import React from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import Home from "../components/Home";
+// import React, { Component } from 'react';
+// import {BrowserRouter, Switch, Route} from 'react-router-dom'
 
-export default (
-  <Router>
-    <Switch>
-      <Route path="/" exact component={Home} />
-    </Switch>
-  </Router>
-);
+
+// class Index extends Component {
+  
+//   render() {
+//     return (
+//       <div>
+//          <BrowserRouter>
+//           <Switch>
+//             <Route exact path='/' component={}/>
+//             <Route exact path='/login' component={}/>
+//             <Route exact path='/signup' component={}/>
+//           </Switch>
+//         </BrowserRouter>
+//       </div>
+//     );
+//   }
+// }
+// export default Index;
