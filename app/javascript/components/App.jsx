@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import axios from 'axios'
 import {BrowserRouter, Switch, Route} from 'react-router-dom'
-import Home from './components/Home'
-import Login from './components/registration/Login'
-import Signup from './components/registration/Signup'
+import Home from '../components/Home'
+import Login from '../components/registration/Login'
+import Signup from '../components/registration/Signup'
+import Posts from '../components/Posts'
 
 class App extends Component {
   constructor(props) {
@@ -68,6 +69,7 @@ class App extends Component {
               <Signup {...props} handleLogin={this.handleLogin} loggedInStatus={this.state.isLoggedIn}/>
               )}
             />
+            <Route path="/posts" exact component={Posts} />
           </Switch>
         </BrowserRouter>
       </div>
