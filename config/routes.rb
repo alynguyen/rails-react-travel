@@ -4,6 +4,7 @@ Rails.application.routes.draw do
       get 'posts/index', to: 'post#index'
       post 'posts/create', to: 'post#create'
       get '/show/:id', to: 'post#show'
+      put '/posts/:id', to: 'post#update'
       delete 'destroy/:id', to: 'post#destroy'
     end
   end

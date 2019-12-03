@@ -77,7 +77,7 @@ class Post extends React.Component {
             <div className="show-links">
               <p className="card-text show-name"><small className="text-muted">Created by {this.state.post.username}</small></p>
               <div>
-                <Link to="/edit_post" className="btn custom-button">
+                <Link to={`edit/${this.state.post.id}`} className="btn custom-button">
                   Edit
                 </Link>
                 <Link to="" className="btn custom-button" onClick={this.deletePost}>

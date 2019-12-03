@@ -7,6 +7,7 @@ import Signup from '../components/registration/Signup'
 import Posts from '../components/Posts'
 import Post from '../components/Post'
 import NewPost from '../components/NewPost'
+import EditPost from '../components/EditPost'
 
 class App extends Component {
   constructor(props) {
@@ -73,13 +74,14 @@ class App extends Component {
             />
             <Route path="/posts" exact component={Posts} />
             <Route path="/post/:id" exact component={Post} />
+            <Route path="/post/edit/:id" exact component={EditPost} />
             <Route
               exact path='/new_post'
               render={props => (
-              this.state.user ? 
-              <NewPost {...props}
-                user={this.state.user.username}
-              />
+              this.state.user 
+              ? <NewPost {...props}
+                  user={this.state.user.username}
+                />
               : <Home />
               )}
             />
