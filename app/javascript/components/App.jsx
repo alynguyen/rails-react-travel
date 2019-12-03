@@ -5,6 +5,7 @@ import Home from '../components/Home'
 import Login from '../components/registration/Login'
 import Signup from '../components/registration/Signup'
 import Posts from '../components/Posts'
+import Post from '../components/Post'
 
 class App extends Component {
   constructor(props) {
@@ -70,6 +71,7 @@ class App extends Component {
               )}
             />
             <Route path="/posts" exact component={Posts} />
+            <Route path="/post" exact component={Post} />
           </Switch>
         </BrowserRouter>
       </div>
