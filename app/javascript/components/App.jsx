@@ -8,6 +8,7 @@ import Posts from '../components/Posts'
 import Post from '../components/Post'
 import NewPost from '../components/NewPost'
 import EditPost from '../components/EditPost'
+import { getCurrentLatLng } from '../utils/location';
 
 class App extends Component {
   constructor(props) {
@@ -15,11 +16,19 @@ class App extends Component {
     this.state = { 
       isLoggedIn: false,
       user: {},
+      lat: null,
+      lng: null
      };
   }
 
   componentDidMount() {
     this.loginStatus()
+    this.getLocation()
+  }
+
+  getLocation = async () => {
+    const {lat, lng} = await getCurrentLatLng();
+    this.setState({ lat, lng })
   }
 
   loginStatus = () => {
