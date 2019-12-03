@@ -22,7 +22,9 @@ class Api::V1::PostController < ApplicationController
   end
 
   def update
-    post = Post.update(post_params)
+    # post = Post.update(post_params)
+    post = Post.find(params[:id])
+    post.update(post_params)
     if post
       render json: post
     else
