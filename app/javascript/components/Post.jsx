@@ -25,7 +25,7 @@ class Post extends React.Component {
         }
         throw new Error("Network response was not ok.");
       })
-      .then(response => this.setState({ recipe: response }))
+      .then(response => this.setState({ post: response }))
       .catch(() => this.props.history.push("/posts"));
   }
 

@@ -91,7 +91,7 @@ class NewPost extends React.Component {
               <button type="submit" className="btn custom-button mt-3">
                 Create Post
               </button>
-              <Link to="/posts" className="btn btn-link mt-3">
+              <Link to="/" className="btn btn-link mt-3">
                 Back to posts
               </Link>
             </form>

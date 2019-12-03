@@ -18,19 +18,24 @@ class Posts extends React.Component {
           }
           throw new Error("Network response was not ok.");
         })
-        .then(response => this.setState({ recipes: response }))
+        .then(response => this.setState({ posts: response }))
         .catch(() => this.props.history.push("/"));
   }
 
   render() {
+
     const { posts } = this.state;
-    const allPosts = (
-      <div>
-        <p>
-          posts exist
-        </p>
-      </div>
-    );
+    const allPosts = posts.map((p, idx) => (
+          <div key={idx} className="card post-card">
+            <div className="card-body">
+              <h5 className="card-title">{p.location}</h5>
+              <h6 className="card-subtitle mb-2 text-muted">{p.username}</h6>
+              <p className="card-text">{p.description}</p>
+              <Link to={`post/${p.id}`} className="card-link">Card link</Link>
+            </div>
+          </div>
+      ));
+
     const noPosts = (
       <div>
         <h4>
@@ -55,9 +60,6 @@ class Posts extends React.Component {
             <div className="row">
               {posts.length > 0 ? allPosts : noPosts}
             </div>
-            <Link to="/" className="btn btn-link">
-              Home
-            </Link>
           </main>
         </div>
       </>
