@@ -76,9 +76,11 @@ class App extends Component {
             <Route
               exact path='/new_post'
               render={props => (
+              this.state.user ? 
               <NewPost {...props}
                 user={this.state.user.username}
               />
+              : <Home />
               )}
             />
           </Switch>

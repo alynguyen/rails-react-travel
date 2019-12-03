@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Navi from "../components/Navi";
 
 class NewPost extends React.Component {
 
@@ -61,43 +62,46 @@ class NewPost extends React.Component {
 
   render() {
     return (
-      <div className="container mt-5">
-        <div className="row">
-          <div className="col-sm-12 col-lg-6 offset-lg-3">
-            <h1 className="font-weight-normal mb-5">
-              Add a new post
-            </h1>
-            <form onSubmit={this.onSubmit}>
-              <div className="form-group">
-                <label htmlFor="postLocation">Location</label>
-                <input
-                  type="text"
-                  name="location"
-                  id="postLocation"
+      <>
+        <Navi />
+        <div className="container mt-5">
+          <div className="row">
+            <div className="col-sm-12 col-lg-6 offset-lg-3">
+              <h1 className="font-weight-normal mb-5">
+                Add a new post
+              </h1>
+              <form onSubmit={this.onSubmit}>
+                <div className="form-group">
+                  <label htmlFor="postLocation">Location</label>
+                  <input
+                    type="text"
+                    name="location"
+                    id="postLocation"
+                    className="form-control"
+                    required
+                    onChange={this.onChange}
+                  />
+                </div>
+                <label htmlFor="description">Description</label>
+                <textarea
                   className="form-control"
+                  id="description"
+                  name="description"
+                  rows="5"
                   required
                   onChange={this.onChange}
                 />
-              </div>
-              <label htmlFor="description">Description</label>
-              <textarea
-                className="form-control"
-                id="description"
-                name="description"
-                rows="5"
-                required
-                onChange={this.onChange}
-              />
-              <button type="submit" className="btn custom-button mt-3">
-                Create Post
-              </button>
-              <Link to="/" className="btn btn-link mt-3">
-                Back to posts
-              </Link>
-            </form>
+                <button type="submit" className="btn custom-button mt-3">
+                  Create Post
+                </button>
+                <Link to="/" className="btn btn-link mt-3">
+                  Back to posts
+                </Link>
+              </form>
+            </div>
           </div>
         </div>
-      </div>
+      </>
     );
   }
 

@@ -4,17 +4,12 @@ import { Link } from 'react-router-dom';
 
 const Navi = (props) => {
   let nav = props.loggedInStatus ?
-    <div className=""> 
-      <Link to='/new_post'>
-        Add Post
-      </Link>
       <button
         className="btn btn-outline-secondary btn-log"
         onClick={props.handleClick}
       >
         Log Out
       </button>
-    </div>
   :
     <div className="">
       <Link to='/login'>
@@ -51,17 +46,4 @@ const Navi = (props) => {
 }
 
 export default Navi;
-
-{/* <Navbar collapseOnSelect expand="sm" bg="light" variant="light">
-<Navbar.Brand>
-  <Link to='/' className="Navbar-Brand link"><p className="Navbar-Logo">Hanger Games</p></Link>
-</Navbar.Brand>
-<Navbar.Toggle aria-controls="responsive-navbar-nav" />
-<Navbar.Collapse id="responsive-navbar-nav">
-<Nav className="mr-auto">
-  {collapseNav}
-</Nav>
-</Navbar.Collapse>
-  {nav}
-</Navbar> */}
 
