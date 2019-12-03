@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios'
 import {Link} from 'react-router-dom'
+import Post from '../components/Posts'
 
 
 const Home = (props) => {
@@ -26,6 +27,7 @@ return (
         <Link to='/logout' onClick={handleClick}>Log Out</Link> : 
         null
       }
+      <Post />
     </div>
   );
 };

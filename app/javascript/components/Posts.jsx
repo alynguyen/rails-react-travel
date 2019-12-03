@@ -48,7 +48,7 @@ class Posts extends React.Component {
         <div className="py-5">
           <main className="container">
             <div className="text-right mb-3">
-              <Link to="/post" className="btn custom-button">
+              <Link to="/new_post" className="btn custom-button">
                 Create New Post
               </Link>
             </div>

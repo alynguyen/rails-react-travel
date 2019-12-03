@@ -29,7 +29,7 @@ class Api::V1::PostController < ApplicationController
   private
 
   def post_params
-    params.permit(:user, :location, :description, :notes)
+    params.permit(:username, :location, :description, :notes)
   end
 
   def post
