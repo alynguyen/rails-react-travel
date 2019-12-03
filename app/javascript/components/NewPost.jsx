@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Navi from "../components/Navi";
+import Geosuggest from 'react-geosuggest';
 
 class NewPost extends React.Component {
 
@@ -65,6 +66,22 @@ class NewPost extends React.Component {
       <>
         <Navi />
         <div className="container mt-5">
+
+          <Geosuggest
+            ref={el=>this._geoSuggest=el}
+            placeholder="Search"
+            // initialValue="Hamburg"
+            // fixtures={fixtures}
+            onSuggestSelect={this.onSuggestSelect}
+            location={new google.maps.LatLng(53.558572, 9.9278215)}
+            radius="20" 
+          />
+
+            {/* <button onClick={()=>this._geoSuggest.focus()}>Focus</button>
+            <button onClick={()=>this._geoSuggest.update('New Zealand')}>Update</button>
+            <button onClick={()=>this._geoSuggest.clear()}>Clear</button>
+            <button onClick={()=>this._geoSuggest.selectSuggest()}>Search</button> */}
+
           <div className="row">
             <div className="col-sm-12 col-lg-6 offset-lg-3">
               <h1 className="font-weight-normal mb-5">
