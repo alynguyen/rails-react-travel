@@ -17,8 +17,11 @@ ActiveRecord::Schema.define(version: 2019_12_02_210829) do
 
   create_table "posts", force: :cascade do |t|
     t.string "username", null: false
-    t.text "location", null: false
+    t.string "location", null: false
     t.text "description", null: false
+    t.string "lat"
+    t.string "lng"
+    t.string "reference"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

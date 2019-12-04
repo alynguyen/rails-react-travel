@@ -2,6 +2,14 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
+input, select, button, textarea {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -moz-appearance: none;
+  font: inherit;
+  color: inherit;
+}
+
 .btn-log {
   margin-left: .5em
 }
@@ -28,3 +36,4 @@
   align-items: center;
   margin-bottom: 0;
 }
+

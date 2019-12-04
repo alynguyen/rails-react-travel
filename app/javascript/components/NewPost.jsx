@@ -10,7 +10,10 @@ class NewPost extends React.Component {
     this.state = {
       username: this.props.user,
       location: "",
-      description: ""
+      description: "",
+      lat: "",
+      lng: "",
+      reference: ""
     };
 
     this.onChange = this.onChange.bind(this);
@@ -31,7 +34,7 @@ class NewPost extends React.Component {
   onSubmit(event) {
     event.preventDefault();
     const url = "/api/v1/posts/create";
-    const { username, location, description } = this.state;
+    const { username, location, description, lat, lng, reference } = this.state;
 
     if (location.length == 0 || description.length == 0)
       return;
@@ -39,7 +42,10 @@ class NewPost extends React.Component {
     const body = {
       username,
       location,
-      description
+      description,
+      lat,
+      lng,
+      reference
     };
 
     const token = document.querySelector('meta[name="csrf-token"]').content;
@@ -61,27 +67,27 @@ class NewPost extends React.Component {
       .catch(error => console.log(error.message));
   }
 
+  onSuggestSelect = (suggest) =>  {
+    console.log(suggest);
+    if (suggest) {
+      this.setState({
+        lat: suggest.location.lat,
+        lng: suggest.location.lng,
+        location: suggest.description,
+        reference: suggest.gmaps.reference
+      });
+    }
+  }
+
+  onSuggestNoResults(userInput) {
+    console.log('onSuggestNoResults for :' + userInput);
+  }
+
   render() {
     return (
       <>
         <Navi />
         <div className="container mt-5">
-
-          <Geosuggest
-            ref={el=>this._geoSuggest=el}
-            placeholder="Search"
-            // initialValue="Hamburg"
-            // fixtures={fixtures}
-            onSuggestSelect={this.onSuggestSelect}
-            location={new google.maps.LatLng(53.558572, 9.9278215)}
-            radius="20" 
-          />
-
-            {/* <button onClick={()=>this._geoSuggest.focus()}>Focus</button>
-            <button onClick={()=>this._geoSuggest.update('New Zealand')}>Update</button>
-            <button onClick={()=>this._geoSuggest.clear()}>Clear</button>
-            <button onClick={()=>this._geoSuggest.selectSuggest()}>Search</button> */}
-
           <div className="row">
             <div className="col-sm-12 col-lg-6 offset-lg-3">
               <h1 className="font-weight-normal mb-5">
@@ -90,13 +96,13 @@ class NewPost extends React.Component {
               <form onSubmit={this.onSubmit}>
                 <div className="form-group">
                   <label htmlFor="postLocation">Location</label>
-                  <input
-                    type="text"
-                    name="location"
-                    id="postLocation"
-                    className="form-control"
-                    required
-                    onChange={this.onChange}
+                  <Geosuggest
+                    ref={el=>this._geoSuggest=el}
+                    placeholder="Search"
+                    onSuggestSelect={this.onSuggestSelect}
+                    onSuggestNoResults={this.onSuggestNoResults}
+                    location={new google.maps.LatLng(this.props.lat, this.props.lng)}
+                    radius="20" 
                   />
                 </div>
                 <label htmlFor="description">Description</label>
@@ -108,12 +114,14 @@ class NewPost extends React.Component {
                   required
                   onChange={this.onChange}
                 />
-                <button type="submit" className="btn custom-button mt-3">
-                  Create Post
-                </button>
-                <Link to="/" className="btn btn-link mt-3">
-                  Back to posts
-                </Link>
+                <div className="container new-post-links">
+                  <Link to="/" className="btn custom-button mt-3">
+                    Back to posts
+                  </Link>
+                  <button type="submit" className="btn custom-button mt-3">
+                    Create Post
+                  </button>
+                </div>
               </form>
             </div>
           </div>
@@ -125,3 +133,4 @@ class NewPost extends React.Component {
 }
 
 export default NewPost;
+

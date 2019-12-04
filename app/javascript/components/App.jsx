@@ -89,6 +89,8 @@ class App extends Component {
               render={props => (
               this.state.user 
               ? <NewPost {...props}
+                  lat={this.state.lat}
+                  lng={this.state.lng}
                   user={this.state.user.username}
                 />
               : <Home />
