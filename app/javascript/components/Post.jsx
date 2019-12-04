@@ -78,7 +78,9 @@ class Post extends React.Component {
       <div className="">
         <Navi />
         <div className="card mb-3 show-card">
-          <img className="card-img-top show-img" src={imgUrl} alt={this.state.post.location} style={{height: "20rem"}}/>
+          <div className="show-img-con">
+            <img className="card-img-top show-img" src={imgUrl} alt={this.state.post.location} style={{height: "20rem"}}/>
+          </div>
           <div className="card-body">
             <h5 className="card-title">{this.state.post.location}</h5>
             <p className="card-text">{this.state.post.description}</p>

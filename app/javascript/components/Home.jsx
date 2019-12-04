@@ -1,8 +1,9 @@
 import React from 'react';
 import axios from 'axios'
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import Post from '../components/Posts'  
 import Navi from '../components/Navi'  
+import GoogleMap from '../components/GoogleMap'  
 
 
 const Home = (props) => {
@@ -22,6 +23,10 @@ return (
       <Navi
         loggedInStatus={props.loggedInStatus}
         handleClick={handleClick}
+      />
+      <GoogleMap 
+        lat={props.lat}
+        lng={props.lng}
       />
       <Post />
     </div>

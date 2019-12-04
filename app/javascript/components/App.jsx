@@ -66,7 +66,12 @@ class App extends Component {
             <Route 
               exact path='/' 
               render={props => (
-              <Home {...props} handleLogout={this.handleLogout} loggedInStatus={this.state.isLoggedIn}/>
+                <Home {...props} 
+                  handleLogout={this.handleLogout} 
+                  loggedInStatus={this.state.isLoggedIn}
+                  lat={this.state.lat}
+                  lng={this.state.lng}
+                />
               )}
             />
             <Route 

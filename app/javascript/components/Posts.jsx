@@ -51,10 +51,6 @@ class Posts extends React.Component {
 
     return (
       <>
-        <section className="jumbotron jumbotron-fluid text-center">
-          <div className="container py-5">
-          </div>
-        </section>
         <div className="py-5">
           <main className="container">
             <div className="text-right mb-3">
