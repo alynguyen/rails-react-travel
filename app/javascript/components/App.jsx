@@ -113,6 +113,7 @@ class App extends Component {
                   lat={this.state.lat}
                   lng={this.state.lng}
                   user={this.state.user.username}
+                  getPosts={this.getPosts}
                 />
               : <Home />
               )}

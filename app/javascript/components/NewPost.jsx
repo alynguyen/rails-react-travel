@@ -21,6 +21,11 @@ class NewPost extends React.Component {
     this.stripHtmlEntities = this.stripHtmlEntities.bind(this);
   }
 
+  componentWillUnmount() {
+    console.log("Unmounting")
+    this.props.getPosts()
+  }
+
   stripHtmlEntities(str) {
     return String(str)
       .replace(/</g, "&lt;")

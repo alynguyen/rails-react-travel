@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import GoogleMapReact from 'google-map-react';
+import Marker from './Marker';
 
 export class GoogleMap extends Component {
 
@@ -12,7 +13,7 @@ export class GoogleMap extends Component {
 
   static defaultProps = {
     center: {lat: 40.73, lng: -73.93},
-    zoom: 12
+    zoom: 10
   }
 
   // onChildMouseEnter = (evt) => {
@@ -26,13 +27,19 @@ export class GoogleMap extends Component {
   render() {
 
     const markers = this.props.posts
-    ? "lsjdf"
-    : "alkdf"
+    ? this.props.posts.map(( p, idx) => (
+        <Marker
+          key={idx}
+          lat={p.lat}
+          lng={p.lng}
+        />
+      ))
+    : null
 
     return (
       <div style={{ height: '20rem', width: '100%' }}>
         <GoogleMapReact 
-           bootstrapURLKeys={{
+          bootstrapURLKeys={{
             key: process.env.GOOGLE_MAPS_KEY, 
             language: 'en'
           }}
@@ -43,7 +50,9 @@ export class GoogleMap extends Component {
           defaultZoom={this.props.zoom}
           onChildMouseEnter={this.onChildMouseEnter}
           onChildMouseLeave={this.onChildMouseLeave}
-        />
+        >
+          {markers}
+        </GoogleMapReact>
       </div>
     );
   }
