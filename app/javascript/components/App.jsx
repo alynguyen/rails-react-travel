@@ -17,13 +17,28 @@ class App extends Component {
       isLoggedIn: false,
       user: {},
       lat: null,
-      lng: null
+      lng: null,
+      posts: []
      };
   }
 
   componentDidMount() {
     this.loginStatus()
+    this.getPosts()
     this.getLocation()
+  }
+
+  getPosts = () => {
+    const url = "/api/v1/posts/index";
+    fetch(url)
+      .then(response => {
+        if (response.ok) {
+          return response.json();
+        }
+        throw new Error("Network response was not ok.");
+      })
+      .then(response => this.setState({ posts: response }))
+      .catch(() => this.props.history.push("/"));
   }
 
   getLocation = async () => {
@@ -71,6 +86,7 @@ class App extends Component {
                   loggedInStatus={this.state.isLoggedIn}
                   lat={this.state.lat}
                   lng={this.state.lng}
+                  posts={this.state.posts}
                 />
               )}
             />

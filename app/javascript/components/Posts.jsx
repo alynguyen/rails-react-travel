@@ -5,22 +5,22 @@ class Posts extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      posts: []
+      // posts: []
     };
   }
 
-  componentDidMount() {
-      const url = "/api/v1/posts/index";
-      fetch(url)
-        .then(response => {
-          if (response.ok) {
-            return response.json();
-          }
-          throw new Error("Network response was not ok.");
-        })
-        .then(response => this.setState({ posts: response }))
-        .catch(() => this.props.history.push("/"));
-  }
+  // componentDidMount() {
+  //     const url = "/api/v1/posts/index";
+  //     fetch(url)
+  //       .then(response => {
+  //         if (response.ok) {
+  //           return response.json();
+  //         }
+  //         throw new Error("Network response was not ok.");
+  //       })
+  //       .then(response => this.setState({ posts: response }))
+  //       .catch(() => this.props.history.push("/"));
+  // }
 
   stripTitle = (str) => {
     let arr = str.split(",")
@@ -29,7 +29,7 @@ class Posts extends React.Component {
 
   render() {
 
-    const { posts } = this.state;
+    const { posts } = this.props.posts;
     const allPosts = posts.map((p, idx) => (
       <div key={idx} className="card post-card">
         <div className="card-body">

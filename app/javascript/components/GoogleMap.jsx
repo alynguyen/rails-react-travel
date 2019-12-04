@@ -25,6 +25,10 @@ export class GoogleMap extends Component {
 
   render() {
 
+    const markers = this.props.posts
+    ? "lsjdf"
+    : "alkdf"
+
     return (
       <div style={{ height: '20rem', width: '100%' }}>
         <GoogleMapReact 
