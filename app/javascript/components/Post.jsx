@@ -63,8 +63,9 @@ class Post extends React.Component {
       .catch(error => console.log(error.message));
   }
 
-  imageUrl() {
-
+  componentWillUnmount() {
+    console.log("Unmounting")
+    this.props.getPosts()
   }
 
   render() {

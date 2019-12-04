@@ -103,8 +103,16 @@ class App extends Component {
               )}
             />
             {/* <Route path="/posts" exact component={Posts} /> */}
-            <Route path="/post/:id" exact component={Post} />
-            <Route path="/post/edit/:id" exact component={EditPost} />
+            <Route 
+              exact path='/post/:id'
+              render={props => (
+              <Post 
+                {...props}
+                getPosts={this.getPosts}
+              />
+              )}
+            />
+            <Route path='/post/edit/:id' exact component={EditPost} />
             <Route
               exact path='/new_post'
               render={props => (
