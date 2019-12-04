@@ -7,22 +7,13 @@ export class GoogleMap extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      center: null
+      center: null,
     };
   }
 
   static defaultProps = {
-    center: {lat: 40.73, lng: -73.93},
     zoom: 10
   }
-
-  // onChildMouseEnter = (evt) => {
-  //   console.log(evt)
-  // }
-
-  // onChildMouseLeave = (evt) => {
-  //   console.log(evt)
-  // }
 
   render() {
 
@@ -36,6 +27,10 @@ export class GoogleMap extends Component {
       ))
     : null
 
+    const infoBox = this.props.hover
+    ? "lskdjf"
+    : "laksdf"
+
     return (
       <div style={{ height: '20rem', width: '100%' }}>
         <GoogleMapReact 
@@ -48,8 +43,8 @@ export class GoogleMap extends Component {
             lng: this.props.lng
           }}
           defaultZoom={this.props.zoom}
-          onChildMouseEnter={this.onChildMouseEnter}
-          onChildMouseLeave={this.onChildMouseLeave}
+          onChildMouseEnter={this.props.onMarkEnter}
+          onChildMouseLeave={this.props.onMarkLeave}
         >
           {markers}
         </GoogleMapReact>

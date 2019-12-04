@@ -24,12 +24,12 @@ return (
         handleClick={handleClick}
       />
       <GoogleMap 
-        lat={props.lat}
-        lng={props.lng}
-        posts={props.posts}
+        {...props}
       />
-      <Posts 
+      <Posts
+        handleClick={handleClick} 
         posts={props.posts}
+        loggedInStatus={props.loggedInStatus}
       />
     </div>
   );

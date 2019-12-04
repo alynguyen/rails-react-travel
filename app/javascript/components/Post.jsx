@@ -77,7 +77,7 @@ class Post extends React.Component {
 
     return (
       <div className="">
-        <Navi />
+        <Navi loggedInStatus={this.props.loggedInStatus}/>
         <div className="card mb-3 show-card">
           <div className="show-img-con">
             <img className="card-img-top show-img" src={imgUrl} alt={this.state.post.location} style={{height: "20rem"}}/>

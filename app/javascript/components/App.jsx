@@ -18,7 +18,10 @@ class App extends Component {
       user: {},
       lat: null,
       lng: null,
-      posts: []
+      posts: [],
+      hover: false,
+      markLat: null,
+      markLng: null
      };
   }
 
@@ -27,6 +30,25 @@ class App extends Component {
     this.getPosts()
     this.getLocation()
   }
+
+  onMarkEnter = (evt, marker) => {
+    console.log(evt,marker,"mouse enter")
+    this.setState({
+      hover: true,
+      markLat: marker.lat,
+      markLng: marker.lng
+    })
+  }
+
+  onMarkLeave = (evt, marker) => {
+    console.log(evt,"mouse leave")
+    this.setState({
+      hover: false,
+      markLat: null,
+      markLng: null
+    })
+  }
+
 
   getPosts = () => {
     const url = "/api/v1/posts/index";
@@ -63,6 +85,7 @@ class App extends Component {
     this.setState({
       isLoggedIn: true,
       user: data.user,
+      username: data.user.username
     })
   }
 
@@ -82,11 +105,10 @@ class App extends Component {
               exact path='/' 
               render={props => (
                 <Home {...props} 
-                  handleLogout={this.handleLogout} 
-                  loggedInStatus={this.state.isLoggedIn}
-                  lat={this.state.lat}
-                  lng={this.state.lng}
-                  posts={this.state.posts}
+                  handleLogout={this.handleLogout}
+                  {...this.state} 
+                  onMarkEnter={this.onMarkEnter}
+                  onMarkLeave={this.onMarkLeave}
                 />
               )}
             />
@@ -108,6 +130,7 @@ class App extends Component {
               render={props => (
               <Post 
                 {...props}
+                loggedInStatus={this.state.isLoggedIn}
                 getPosts={this.getPosts}
               />
               )}
@@ -118,6 +141,7 @@ class App extends Component {
               render={props => (
               this.state.user 
               ? <NewPost {...props}
+                  loggedInStatus={this.state.isLoggedIn}
                   lat={this.state.lat}
                   lng={this.state.lng}
                   user={this.state.user.username}

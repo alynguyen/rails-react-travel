@@ -38,14 +38,18 @@ class Posts extends React.Component {
       </div>
     );
 
+    const newPost = this.props.loggedInStatus
+      ? <Link to="/new_post" className="btn custom-button">
+          Create New Post
+        </Link>
+      : null
+    
     return (
       <>
         <div className="posts">
           <main className="container">
             <div className="text-right mb-3">
-              <Link to="/new_post" className="btn custom-button">
-                Create New Post
-              </Link>
+              { newPost }
             </div>
             <div className="row posts-con">
               {this.props.posts.length > 0 ? allPosts : noPosts}

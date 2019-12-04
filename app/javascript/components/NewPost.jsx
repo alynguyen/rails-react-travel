@@ -91,7 +91,7 @@ class NewPost extends React.Component {
   render() {
     return (
       <>
-        <Navi />
+        <Navi loggedInStatus={this.props.loggedInStatus} />
         <div className="container mt-5">
           <div className="row">
             <div className="col-sm-12 col-lg-6 offset-lg-3">
