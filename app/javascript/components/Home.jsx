@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios'
 import { Link } from 'react-router-dom'
-import Post from '../components/Posts'  
+import Posts from '../components/Posts'  
 import Navi from '../components/Navi'  
 import GoogleMap from '../components/GoogleMap'  
 
@@ -29,7 +29,9 @@ return (
         lng={props.lng}
         posts={props.posts}
       />
-      <Post />
+      <Posts 
+        posts={props.posts}
+      />
     </div>
   );
 };

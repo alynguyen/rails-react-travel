@@ -9,19 +9,6 @@ class Posts extends React.Component {
     };
   }
 
-  // componentDidMount() {
-  //     const url = "/api/v1/posts/index";
-  //     fetch(url)
-  //       .then(response => {
-  //         if (response.ok) {
-  //           return response.json();
-  //         }
-  //         throw new Error("Network response was not ok.");
-  //       })
-  //       .then(response => this.setState({ posts: response }))
-  //       .catch(() => this.props.history.push("/"));
-  // }
-
   stripTitle = (str) => {
     let arr = str.split(",")
     return arr[0]
@@ -29,17 +16,19 @@ class Posts extends React.Component {
 
   render() {
 
-    const { posts } = this.props.posts;
-    const allPosts = posts.map((p, idx) => (
-      <div key={idx} className="card post-card">
-        <div className="card-body">
-          <h5 className="card-title">{this.stripTitle(p.location)}</h5>
-          <h6 className="card-subtitle mb-2 text-muted">{p.username}</h6>
-          <p className="card-text">{p.description}</p>
-          <Link to={`post/${p.id}`} className="card-link">Card link</Link>
+    const allPosts = this.props.posts ? ( 
+      this.props.posts.map((p, idx) => (
+        <div key={idx} className="card post-card">
+          <div className="card-body">
+            <h5 className="card-title">{this.stripTitle(p.location)}</h5>
+            <h6 className="card-subtitle mb-2 text-muted">{p.username}</h6>
+            <p className="card-text">{p.description}</p>
+            <Link to={`post/${p.id}`} className="card-link">Card link</Link>
+          </div>
         </div>
-      </div>
-    ));
+      ))
+    )
+    : <>Loading</>
 
     const noPosts = (
       <div>
@@ -59,7 +48,7 @@ class Posts extends React.Component {
               </Link>
             </div>
             <div className="row">
-              {posts.length > 0 ? allPosts : noPosts}
+              {this.props.posts.length > 0 ? allPosts : noPosts}
             </div>
           </main>
         </div>

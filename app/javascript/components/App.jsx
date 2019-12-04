@@ -102,7 +102,7 @@ class App extends Component {
               <Signup {...props} handleLogin={this.handleLogin} loggedInStatus={this.state.isLoggedIn}/>
               )}
             />
-            <Route path="/posts" exact component={Posts} />
+            {/* <Route path="/posts" exact component={Posts} /> */}
             <Route path="/post/:id" exact component={Post} />
             <Route path="/post/edit/:id" exact component={EditPost} />
             <Route
