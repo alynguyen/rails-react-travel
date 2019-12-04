@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import GoogleMapReact from 'google-map-react';
 import Marker from './Marker';
+import MarkerInfo from './MarkerInfo';
 
 export class GoogleMap extends Component {
 
@@ -28,8 +29,11 @@ export class GoogleMap extends Component {
     : null
 
     const infoBox = this.props.hover
-    ? "lskdjf"
-    : "laksdf"
+    ? <MarkerInfo
+        lat={this.props.markLat}
+        lng={this.props.markLng}
+      />
+    : null
 
     return (
       <div style={{ height: '20rem', width: '100%' }}>
@@ -47,6 +51,7 @@ export class GoogleMap extends Component {
           onChildMouseLeave={this.props.onMarkLeave}
         >
           {markers}
+          {infoBox}
         </GoogleMapReact>
       </div>
     );
