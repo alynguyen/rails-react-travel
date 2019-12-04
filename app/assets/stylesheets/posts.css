@@ -1,0 +1,13 @@
+.posts {
+  padding-top: 1rem;
+  align-content: center;
+  justify-content: center;
+}
+
+.post-card {
+  margin: .2em;
+}
+
+.posts-con {
+  justify-content: center;
+}

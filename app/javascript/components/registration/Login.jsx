@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import axios from 'axios'
-import {Link} from 'react-router-dom'
+import axios from 'axios';
+import {Link} from 'react-router-dom';
+import Navi from '../Navi';
 
 class Login extends Component {
 
@@ -68,41 +69,50 @@ class Login extends Component {
     const {username, email, password} = this.state
     return (
       <div>
-        <h1>Log In</h1>
-        <form onSubmit={this.handleSubmit}>
-          <input
-            placeholder="username"
-            type="text"
-            name="username"
-            value={username}
-            onChange={this.handleChange}
-          />
-          <input
-            placeholder="email"
-            type="text"
-            name="email"
-            value={email}
-            onChange={this.handleChange}
-          />
-          <input
-            placeholder="password"
-            type="password"
-            name="password"
-            value={password}
-            onChange={this.handleChange}
-          />
-         <button placeholder="submit" type="submit">
-            Log In
-          </button>
-          <div>
-            or <Link to='/signup'>sign up</Link>
+        <Navi />
+        <div className="container mt-5">
+          <div className="row">
+            <div className="col-sm-12 col-lg-6 offset-lg-3">
+              <h1 className="font-weight-normal mb-5">Log In</h1>
+              <form onSubmit={this.handleSubmit}>
+                <input
+                  className="form-control signup-input"
+                  placeholder="username"
+                  type="text"
+                  name="username"
+                  value={username}
+                  onChange={this.handleChange}
+                />
+                <input
+                  className="form-control signup-input"
+                  placeholder="email"
+                  type="text"
+                  name="email"
+                  value={email}
+                  onChange={this.handleChange}
+                />
+                <input
+                  className="form-control signup-input"
+                  placeholder="password"
+                  type="password"
+                  name="password"
+                  value={password}
+                  onChange={this.handleChange}
+                />
+                <div className="new-post-links">
+                  <button className="btn custom-button" placeholder="submit" type="submit">
+                    Log In
+                  </button>
+                </div>
+                
+              </form>
+              <div>
+                {
+                  this.state.errors ? this.handleErrors() : null
+                }
+              </div>
+            </div>
           </div>
-          
-         </form>
-         <div>
-          {
-            this.state.errors ? this.handleErrors() : null
-          }
         </div>
       </div>
     );
