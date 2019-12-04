@@ -74,7 +74,7 @@ class NewPost extends React.Component {
         lat: suggest.location.lat,
         lng: suggest.location.lng,
         location: suggest.description,
-        reference: suggest.gmaps.reference
+        reference: suggest.gmaps.photos[0].getUrl({'maxWidth': 1800, 'maxHeight': 1800})
       });
     }
   }

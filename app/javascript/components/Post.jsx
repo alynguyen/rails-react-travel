@@ -63,14 +63,22 @@ class Post extends React.Component {
       .catch(error => console.log(error.message));
   }
 
+  imageUrl() {
+
+  }
+
   render() {
     const { post } = this.state;
-    let notesList = "No notes available";
+    const notesList = "No notes available";
+    const imgUrl = this.state.post.reference 
+      ? this.state.post.reference
+      : "https://picsum.photos/800/200"
+
     return (
       <div className="">
         <Navi />
         <div className="card mb-3 show-card">
-          <img className="card-img-top show-img" src="https://picsum.photos/800/200" alt="Card image cap" style={{height: "20rem"}}/>
+          <img className="card-img-top show-img" src={imgUrl} alt={this.state.post.location} style={{height: "20rem"}}/>
           <div className="card-body">
             <h5 className="card-title">{this.state.post.location}</h5>
             <p className="card-text">{this.state.post.description}</p>
