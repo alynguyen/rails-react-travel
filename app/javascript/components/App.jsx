@@ -22,33 +22,39 @@ class App extends Component {
       hover: false,
       markLat: null,
       markLng: null,
-      markRef: null
+      markRef: null,
+      markId: null,
      };
   }
 
   componentDidMount() {
-    this.loginStatus()
     this.getPosts()
     this.getLocation()
   }
 
+  componentWillUnmount() {
+    this.handleLogout()
+  }
+
   onMarkEnter = (evt, marker) => {
-    console.log(evt,marker,"mouse enter")
+    // console.log(evt,marker,"mouse enter")
     this.setState({
       hover: true,
       markLat: marker.lat,
       markLng: marker.lng,
-      markRef: marker.reference
+      markRef: marker.reference,
+      markId: marker.id
     })
   }
 
   onMarkLeave = (evt, marker) => {
-    console.log(evt,"mouse leave")
+    // console.log(evt,"mouse leave")
     this.setState({
       hover: false,
       markLat: null,
       markLng: null,
-      markRef: null
+      markRef: null,
+      markId: null
     })
   }
 
@@ -88,7 +94,6 @@ class App extends Component {
     this.setState({
       isLoggedIn: true,
       user: data.user,
-      // username: data.user.username
     })
   }
 
@@ -107,7 +112,7 @@ class App extends Component {
             <Route 
               exact path='/' 
               render={props => (
-                <Home {...props} 
+                <Home
                   handleLogout={this.handleLogout}
                   {...this.state} 
                   onMarkEnter={this.onMarkEnter}
@@ -118,16 +123,21 @@ class App extends Component {
             <Route 
               exact path='/login' 
               render={props => (
-              <Login {...props} handleLogin={this.handleLogin} loggedInStatus={this.state.isLoggedIn}/>
+              <Login 
+                {...props} 
+                handleLogin={this.handleLogin} 
+                loggedInStatus={this.state.isLoggedIn}/>
               )}
             />
             <Route 
               exact path='/signup' 
               render={props => (
-              <Signup {...props} handleLogin={this.handleLogin} loggedInStatus={this.state.isLoggedIn}/>
+              <Signup 
+                {...props} 
+                handleLogin={this.handleLogin} 
+                loggedInStatus={this.state.isLoggedIn}/>
               )}
             />
-            {/* <Route path="/posts" exact component={Posts} /> */}
             <Route 
               exact path='/post/:id'
               render={props => (
@@ -138,7 +148,15 @@ class App extends Component {
               />
               )}
             />
-            <Route path='/post/edit/:id' exact component={EditPost} />
+            <Route 
+              exact path='/post/edit/:id'
+              render={props => (
+              <EditPost 
+                {...props}
+                loggedInStatus={this.state.isLoggedIn}
+              />
+              )}
+            />
             <Route
               exact path='/new_post'
               render={props => (

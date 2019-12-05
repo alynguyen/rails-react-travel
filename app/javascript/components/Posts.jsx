@@ -8,6 +8,8 @@ class Posts extends React.Component {
     this.state = {
       // posts: []
     };
+    this.mouseOverCard = this.mouseOverCard.bind(this);
+    this.mouseOutCard = this.mouseOutCard.bind(this);
   }
 
   stripTitle = (str) => {
@@ -15,8 +17,8 @@ class Posts extends React.Component {
     return arr[0]
   }
 
-  mouseOverCard = () => {
-    console.log("Mouse Over Card")
+  mouseOverCard = (data) => {
+    console.log(data,"Mouse Over Card")
   }
 
   mouseOutCard() {
@@ -26,10 +28,11 @@ class Posts extends React.Component {
   render() {
 
     const allPosts = this.props.posts ? ( 
-      this.props.posts.map((post, index) => (
+      this.props.posts.reverse().map((post, index) => (
           <PostCard 
-            onMouseOver={this.mouseOverCard}
-            onMouseLeave={this.mouseOutCard}
+            mouseOverCard={this.mouseOverCard}
+            onMarkEnter={this.props.onMarkEnter}
+            onMarkLeave={this.props.onMarkLeave}
             key={index}
             id={post.id}
             location={post.location}

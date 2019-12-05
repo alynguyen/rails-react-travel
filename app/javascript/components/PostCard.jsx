@@ -2,8 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 
-
 const PostCard = (props) => {
+
   return (
     <div className="card post-card">
       <div className="card-body">

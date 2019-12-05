@@ -20,12 +20,13 @@ export class GoogleMap extends Component {
   render() {
 
     const markers = this.props.posts
-    ? this.props.posts.map((p, idx) => (
+    ? this.props.posts.map(p => (
         <Marker
-          key={idx}
+          key={p.id}
           lat={p.lat}
           lng={p.lng}
           reference={p.reference}
+          id={p.id}
         />
       ))
     : null
@@ -35,6 +36,7 @@ export class GoogleMap extends Component {
         lat={this.props.markLat}
         lng={this.props.markLng}
         reference={this.props.markRef}
+        id={this.props.markId}
       />
     : null
 
@@ -50,6 +52,7 @@ export class GoogleMap extends Component {
             lng: this.props.lng
           }}
           defaultZoom={this.props.zoom}
+          yesIWantToUseGoogleMapApiInternals
           onChildMouseEnter={this.props.onMarkEnter}
           onChildMouseLeave={this.props.onMarkLeave}
         >

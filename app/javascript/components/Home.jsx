@@ -20,7 +20,7 @@ return (
    
     <div>
       <Navi
-        loggedInStatus={props.loggedInStatus}
+        loggedInStatus={props.isLoggedIn}
         handleClick={handleClick}
       />
       <GoogleMap 
@@ -29,8 +29,9 @@ return (
       <Posts
         handleClick={handleClick} 
         onMarkEnter={props.onMarkEnter}
+        onMarkLeave={props.onMarkLeave}
         posts={props.posts}
-        loggedInStatus={props.loggedInStatus}
+        loggedInStatus={props.isLoggedIn}
       />
     </div>
   );

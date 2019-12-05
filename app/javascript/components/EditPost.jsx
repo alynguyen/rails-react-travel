@@ -94,7 +94,7 @@ class EditPost extends React.Component {
   render() {
     return (
       <>
-        <Navi />
+        <Navi loggedInStatus={this.props.loggedInStatus}/>
         <div className="container mt-5">
           <div className="row">
             <div className="col-sm-12 col-lg-6 offset-lg-3">
@@ -124,12 +124,14 @@ class EditPost extends React.Component {
                   required
                   onChange={this.onChange}
                 />
-                <button type="submit" className="btn custom-button mt-3">
-                  Update Post
-                </button>
-                <Link to={`/post/${this.props.match.params.id}`} className="btn btn-link mt-3">
-                  Back to post
-                </Link>
+                <div className="new-post-links">
+                  <Link to={`/post/${this.props.match.params.id}`} className="btn custom-button mt-3">
+                    Back to post
+                  </Link>
+                  <button type="submit" className="btn custom-button mt-3">
+                    Update Post
+                  </button>
+                </div>
               </form>
             </div>
           </div>
