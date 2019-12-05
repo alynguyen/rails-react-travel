@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import GoogleMapReact from 'google-map-react';
 import Marker from './Marker';
 import MarkerInfo from './MarkerInfo';
+import Posts from './Posts';
 
 export class GoogleMap extends Component {
 
@@ -19,7 +20,7 @@ export class GoogleMap extends Component {
   render() {
 
     const markers = this.props.posts
-    ? this.props.posts.map(( p, idx) => (
+    ? this.props.posts.map((p, idx) => (
         <Marker
           key={idx}
           lat={p.lat}

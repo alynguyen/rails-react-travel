@@ -28,6 +28,7 @@ return (
       />
       <Posts
         handleClick={handleClick} 
+        onMarkEnter={props.onMarkEnter}
         posts={props.posts}
         loggedInStatus={props.loggedInStatus}
       />

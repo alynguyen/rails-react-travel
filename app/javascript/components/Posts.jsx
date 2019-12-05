@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import React, { Component } from 'react';
+import PostCard from './PostCard';
 
 class Posts extends React.Component {
   constructor(props) {
@@ -14,21 +15,34 @@ class Posts extends React.Component {
     return arr[0]
   }
 
+  mouseOverCard = () => {
+    console.log("Mouse Over Card")
+  }
+
+  mouseOutCard() {
+    console.log("lsjdlfsjldfk")
+  }
+
   render() {
 
     const allPosts = this.props.posts ? ( 
-      this.props.posts.map((p, idx) => (
-        <div key={idx} className="card post-card">
-          <div className="card-body">
-            <h5 className="card-title">{this.stripTitle(p.location)}</h5>
-            <h6 className="card-subtitle mb-2 text-muted">{p.username}</h6>
-            <p className="card-text">{p.description}</p>
-            <Link to={`post/${p.id}`} className="card-link">View</Link>
-          </div>
-        </div>
+      this.props.posts.map((post, index) => (
+          <PostCard 
+            onMouseOver={this.mouseOverCard}
+            onMouseLeave={this.mouseOutCard}
+            key={index}
+            id={post.id}
+            location={post.location}
+            username={post.username}
+            description={post.description}
+            markLat={post.lat}
+            markLng={post.lng}
+            reference={post.reference}
+            stripTitle={this.stripTitle}
+          />
       ))
     )
-    : <>Loading</>
+    : <>Loading...</>
 
     const noPosts = (
       <div>
@@ -53,7 +67,7 @@ class Posts extends React.Component {
             </div>
             <div className="row posts-con">
               {this.props.posts.length > 0 ? allPosts : noPosts}
-            </div>
+            </div>          
           </main>
         </div>
       </>

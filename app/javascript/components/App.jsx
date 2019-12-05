@@ -88,7 +88,7 @@ class App extends Component {
     this.setState({
       isLoggedIn: true,
       user: data.user,
-      username: data.user.username
+      // username: data.user.username
     })
   }
 

@@ -3,7 +3,7 @@ import React from 'react';
 const MarkerInfo = (props) => {
   return (
     <>
-      <div className="marker-info">
+      <div id="info-img" className="marker-info animated bounce">
         <img src={props.reference} />
       </div>
     </>
