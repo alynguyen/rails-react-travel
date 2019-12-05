@@ -1,10 +1,12 @@
 import React from 'react';
 
-const MarkerInfo = () => {
+const MarkerInfo = (props) => {
   return (
-    <div>
-      Test
-    </div>
+    <>
+      <div className="marker-info">
+        <img src={props.reference} />
+      </div>
+    </>
   );
 }
 

@@ -21,7 +21,8 @@ class App extends Component {
       posts: [],
       hover: false,
       markLat: null,
-      markLng: null
+      markLng: null,
+      markRef: null
      };
   }
 
@@ -36,7 +37,8 @@ class App extends Component {
     this.setState({
       hover: true,
       markLat: marker.lat,
-      markLng: marker.lng
+      markLng: marker.lng,
+      markRef: marker.reference
     })
   }
 
@@ -45,7 +47,8 @@ class App extends Component {
     this.setState({
       hover: false,
       markLat: null,
-      markLng: null
+      markLng: null,
+      markRef: null
     })
   }
 

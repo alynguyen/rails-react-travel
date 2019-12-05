@@ -24,6 +24,7 @@ export class GoogleMap extends Component {
           key={idx}
           lat={p.lat}
           lng={p.lng}
+          reference={p.reference}
         />
       ))
     : null
@@ -32,6 +33,7 @@ export class GoogleMap extends Component {
     ? <MarkerInfo
         lat={this.props.markLat}
         lng={this.props.markLng}
+        reference={this.props.markRef}
       />
     : null
 
