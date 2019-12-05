@@ -28,7 +28,7 @@ class Posts extends React.Component {
   render() {
 
     const allPosts = this.props.posts ? ( 
-      this.props.posts.reverse().map((post, index) => (
+      this.props.posts.map((post, index) => (
           <PostCard 
             mouseOverCard={this.mouseOverCard}
             onMarkEnter={this.props.onMarkEnter}
@@ -38,8 +38,8 @@ class Posts extends React.Component {
             location={post.location}
             username={post.username}
             description={post.description}
-            markLat={post.lat}
-            markLng={post.lng}
+            lat={post.lat}
+            lng={post.lng}
             reference={post.reference}
             stripTitle={this.stripTitle}
           />

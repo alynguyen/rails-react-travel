@@ -5,7 +5,10 @@ import { Link } from 'react-router-dom';
 const PostCard = (props) => {
 
   return (
-    <div className="card post-card">
+    <div className="card post-card" 
+      onMouseEnter={() => props.onMarkEnter(props.id, props)}
+      onMouseLeave={() => props.onMarkLeave()}
+      >
       <div className="card-body">
         <h5 className="card-title">{props.stripTitle(props.location)}</h5>
         <h6 className="card-subtitle mb-2 text-muted">{props.username}</h6>

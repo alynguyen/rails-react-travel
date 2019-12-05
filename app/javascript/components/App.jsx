@@ -43,7 +43,9 @@ class App extends Component {
       markLat: marker.lat,
       markLng: marker.lng,
       markRef: marker.reference,
-      markId: marker.id
+      markId: marker.id,
+      // lat: marker.lat,
+      // lng: marker.lng
     })
   }
 
