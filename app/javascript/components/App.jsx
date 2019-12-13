@@ -44,9 +44,10 @@ class App extends Component {
       markLng: marker.lng,
       markRef: marker.reference,
       markId: marker.id,
-      // lat: marker.lat,
-      // lng: marker.lng
+      lat: Number(marker.lat),
+      lng: Number(marker.lng)
     })
+    console.log("marker lat", typeof marker.lat)
   }
 
   onMarkLeave = (evt, marker) => {

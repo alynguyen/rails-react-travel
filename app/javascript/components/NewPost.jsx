@@ -11,8 +11,8 @@ class NewPost extends React.Component {
       username: this.props.user,
       location: "",
       description: "",
-      lat: "",
-      lng: "",
+      lat: null,
+      lng: null,
       reference: ""
     };
 
@@ -22,7 +22,6 @@ class NewPost extends React.Component {
   }
 
   componentWillUnmount() {
-    console.log("Unmounting")
     this.props.getPosts()
   }
 

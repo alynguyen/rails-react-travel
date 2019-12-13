@@ -10,6 +10,7 @@ export class GoogleMap extends Component {
     super(props);
     this.state = {
       center: null,
+      currentCenter: {lat: this.props.markLat, lng: this.props.markLng}
     };
   }
 
@@ -17,7 +18,19 @@ export class GoogleMap extends Component {
     zoom: 10
   }
 
+  onChange() {
+    console.log("change")
+    // this.setState = {
+    //   center: {
+    //     lat: this.props.markLat,
+    //     lng: this.props.markLng
+    //   }
+    // }
+  }
+
   render() {
+
+    const setCenter = this.props.markLat === null ? ({lat: this.props.lat, lng: this.props.lng}) : ({lat: this.props.markLat, lng: this.props.markLng})
 
     const markers = this.props.posts
     ? this.props.posts.map(p => (
@@ -47,10 +60,15 @@ export class GoogleMap extends Component {
             key: process.env.GOOGLE_MAPS_KEY, 
             language: 'en'
           }}
+          // center={{
+          //   lat: this.props.lat,
+          //   lng: this.props.lng
+          // }}
           center={{
             lat: this.props.lat,
             lng: this.props.lng
           }}
+          // _onChange={this.onChange}
           defaultZoom={this.props.zoom}
           yesIWantToUseGoogleMapApiInternals
           onChildMouseEnter={this.props.onMarkEnter}
