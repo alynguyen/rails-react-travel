@@ -16,6 +16,9 @@ def authorized_user?
 def logout!
      session.clear
    end
+def fallback_index_html
+  render :file => 'public/index.html'
+  end
 end
 
 # class ApplicationController < ActionController::API
