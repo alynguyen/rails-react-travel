@@ -16,3 +16,7 @@ Rails.application.routes.draw do
   resources :users, only: [:create, :show, :index]
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
+
+get '*path', to: "application#fallback_index_html", constraints: ->(request) do
+  !request.xhr? && request.format.html?
+end
