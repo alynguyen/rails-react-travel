@@ -7,6 +7,7 @@ class CreatePosts < ActiveRecord::Migration[6.0]
       t.string :lat, null: true
       t.string :lng, null: true
       t.string :reference, null: true
+      t.string :place_id, null: true
       t.timestamps
     end
     # add_foreign_key :posts, :users, column: :user_id

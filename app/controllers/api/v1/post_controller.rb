@@ -40,7 +40,7 @@ class Api::V1::PostController < ApplicationController
   private
 
   def post_params
-    params.permit(:username, :location, :description, :lat, :lng, :reference, :notes)
+    params.permit(:username, :location, :description, :lat, :lng, :reference, :notes, :place_id)
   end
 
   def post

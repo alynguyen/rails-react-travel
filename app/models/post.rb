@@ -5,4 +5,5 @@ class Post < ApplicationRecord
   validates :lat, presence: false
   validates :lng, presence: false
   validates :reference, presense: false
+  validates :place_id, presense: false
 end

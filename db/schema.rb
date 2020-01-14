@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 2019_12_02_210829) do
     t.string "lat"
     t.string "lng"
     t.string "reference"
+    t.string "place_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

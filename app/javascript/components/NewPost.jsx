@@ -13,7 +13,8 @@ class NewPost extends React.Component {
       description: "",
       lat: null,
       lng: null,
-      reference: ""
+      reference: "",
+      place_id: ""
     };
 
     this.onChange = this.onChange.bind(this);
@@ -38,7 +39,7 @@ class NewPost extends React.Component {
   onSubmit(event) {
     event.preventDefault();
     const url = "/api/v1/posts/create";
-    const { username, location, description, lat, lng, reference } = this.state;
+    const { username, location, description, lat, lng, reference, place_id } = this.state;
 
     if (location.length == 0 || description.length == 0)
       return;
@@ -49,7 +50,8 @@ class NewPost extends React.Component {
       description,
       lat,
       lng,
-      reference
+      reference,
+      place_id
     };
 
     const token = document.querySelector('meta[name="csrf-token"]').content;
@@ -78,7 +80,8 @@ class NewPost extends React.Component {
         lat: suggest.location.lat,
         lng: suggest.location.lng,
         location: suggest.description,
-        reference: suggest.gmaps.photos[0].getUrl({'maxWidth': 1800, 'maxHeight': 1800})
+        reference: suggest.gmaps.photos[0].getUrl({'maxWidth': 1800, 'maxHeight': 1800}),
+        place_id: suggest.placeId
       });
     }
   }
