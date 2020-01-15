@@ -31,7 +31,7 @@
   },
   "scripts": {
     "build": "yarn install && yarn build",
-    "deploy": "cp -a client/build/. public/",
+    "deploy": "cp -a build/. public/",
     "postinstall": "yarn deploy && echo 'Client built!'"
   },
   "engines": {
