@@ -30,8 +30,8 @@
     "webpack-dev-server": "^3.9.0"
   },
   "scripts": {
-    "build": "cd app && yarn install && yarn build && cd ..",
-    "deploy": "cp -a app/build/. public/",
+    "build": "cd client && yarn install && yarn build && cd ..",
+    "deploy": "cp -a client/build/. public/",
     "postinstall": "yarn build && yarn deploy && echo 'Client built!'"
   },
   "engines": {
