@@ -32,7 +32,7 @@
   "scripts": {
     "build": "cd app && yarn install && yarn build && cd ..",
     "deploy": "cp -a app/build/. public/",
-    "postinstall": "yarn deploy && echo 'Client built!'"
+    "postinstall": "yarn build && yarn deploy && echo 'Client built!'"
   },
   "engines": {
     "yarn": "1.19.2",
