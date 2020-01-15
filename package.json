@@ -29,9 +29,6 @@
     "babel-loader": "^8.0.6",
     "webpack-dev-server": "^3.9.0"
   },
-  "scripts": {
-    "postinstall": "yarn build && yarn deploy && echo 'Client built!'"
-  },
   "engines": {
     "yarn": "1.19.2",
     "npm": "6.13.1",
