@@ -38,7 +38,7 @@ const Navi = (props) => {
   return (
     <div className="Navbar">
       <nav className="navbar navbar-light bg-light">
-        <Link className="navbar-brand" to='/'>Travel Blog</Link>
+        <Link className="navbar-brand" to='/'>Tiny's Travel Tricks</Link>
         {nav}
       </nav>
     </div>
