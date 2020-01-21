@@ -15,7 +15,7 @@ class Login extends Component {
      };
   }
 
-  baseUrl = process.env.baseURL || "http://localhost:3001"
+  // baseUrl = process.env.baseURL || "http://localhost:3001";
 
   componentWillMount() {
     return this.props.loggedInStatus ? this.redirect() : null
@@ -37,7 +37,7 @@ class Login extends Component {
       password: password
     }
     
-  axios.post(`${baseUrl}/login`, {user}, {withCredentials: true})
+  axios.post(`${process.env.baseURL}login`, {user}, {withCredentials: true})
     .then(response => {
       if (response.data.logged_in) {
         this.props.handleLogin(response.data)
