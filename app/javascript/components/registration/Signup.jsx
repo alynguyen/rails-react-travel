@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import Navi from '../Navi';
 
+baseUrl = process.env.baseURL || "http://localhost:3001"
+
 class Signup extends Component {
   constructor(props) {
     super(props);
@@ -31,7 +33,7 @@ class Signup extends Component {
       password_confirmation: password_confirmation
     }
   
-    axios.post('/users', {user}, {withCredentials: true})
+    axios.post(`${baseUrl}/users`, {user}, {withCredentials: true})
     .then(response => {
       if (response.data.status === 'created') {
         this.props.handleLogin(response.data)

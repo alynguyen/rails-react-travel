@@ -3,6 +3,8 @@ import axios from 'axios';
 import {Link} from 'react-router-dom';
 import Navi from '../Navi';
 
+baseUrl = process.env.baseURL || "http://localhost:3001"
+
 class Login extends Component {
 
   constructor(props) {
@@ -35,7 +37,7 @@ class Login extends Component {
       password: password
     }
     
-  axios.post('/login', {user}, {withCredentials: true})
+  axios.post(`${baseUrl}/login`, {user}, {withCredentials: true})
     .then(response => {
       if (response.data.logged_in) {
         this.props.handleLogin(response.data)
