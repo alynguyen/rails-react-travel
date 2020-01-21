@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import Navi from '../Navi';
 
-baseUrl = process.env.baseURL || "http://localhost:3001"
-
 class Signup extends Component {
   constructor(props) {
     super(props);
@@ -15,6 +13,8 @@ class Signup extends Component {
       errors: ''
      };
   }
+
+  baseUrl = process.env.baseURL || "http://localhost:3001"
 
   handleChange = (event) => {
     const {name, value} = event.target

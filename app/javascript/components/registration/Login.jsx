@@ -3,8 +3,6 @@ import axios from 'axios';
 import {Link} from 'react-router-dom';
 import Navi from '../Navi';
 
-baseUrl = process.env.baseURL || "http://localhost:3001"
-
 class Login extends Component {
 
   constructor(props) {
@@ -16,6 +14,8 @@ class Login extends Component {
       errors: ''
      };
   }
+
+  baseUrl = process.env.baseURL || "http://localhost:3001"
 
   componentWillMount() {
     return this.props.loggedInStatus ? this.redirect() : null
