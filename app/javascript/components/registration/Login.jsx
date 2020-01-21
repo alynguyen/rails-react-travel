@@ -35,9 +35,9 @@ class Login extends Component {
       password: password
     }
 
-  // baseUrl = process.env.baseURL || "http://localhost:3001";
+  const baseUrl = process.env.baseURL || "http://localhost:3001";
 
-  axios.post(`https://rails-travelblogtest.herokuapp.com/login`, {user}, {withCredentials: true})
+  axios.post(`${baseUrl}/login`, {user}, {withCredentials: true})
     .then(response => {
       if (response.data.logged_in) {
         this.props.handleLogin(response.data)
