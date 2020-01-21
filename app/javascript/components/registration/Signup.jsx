@@ -14,8 +14,6 @@ class Signup extends Component {
      };
   }
 
-  // baseUrl = process.env.baseURL || "http://localhost:3001";
-
   handleChange = (event) => {
     const {name, value} = event.target
     this.setState({
@@ -32,8 +30,10 @@ class Signup extends Component {
       password: password,
       password_confirmation: password_confirmation
     }
+
+    // baseUrl = process.env.baseURL || "http://localhost:3001";
   
-    axios.post(`${process.env.baseURL}users`, {user}, {withCredentials: true})
+    axios.post(`http://localhost:3001/users`, {user}, {withCredentials: true})
     .then(response => {
       if (response.data.status === 'created') {
         this.props.handleLogin(response.data)
